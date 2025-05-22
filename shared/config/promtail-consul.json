@@ -1,0 +1,17 @@
+{
+    "service": {
+      "name": "promtail",
+      "id": "promtail",
+      "port": 3200,
+      "tags": ["logging", "promtail"],
+      "check": {
+        "id": "promtail-http",
+        "name": "Promtail HTTP Check",
+        "http": "http://127.0.0.1:3200",
+        "method": "GET",
+        "interval": "10s",
+        "timeout": "5s"
+      }
+    }
+  }
+  

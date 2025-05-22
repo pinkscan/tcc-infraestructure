@@ -1,0 +1,17 @@
+{
+  "service": {
+    "name": "node-exporter",
+    "port": 9100,
+    "tags": [
+      "prometheus",
+      "system-metrics"
+    ],
+    "checks": [
+      {
+        "http": "http://127.0.0.1:9100/metrics",
+        "interval": "10s",
+        "timeout": "5s"
+      }
+    ]
+  }
+}

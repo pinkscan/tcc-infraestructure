@@ -1,0 +1,24 @@
+server:
+  http_listen_port: 3200
+  grpc_listen_port: 0
+clients:
+  - url: http://loki.service.consul:3100/loki/api/v1/push
+positions:
+  filename: /etc/promtail.d/promtail_positions.yaml
+scrape_configs:
+  - job_name: "vault-aud-logs"
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: "vault-audit"
+          host: "HOSTNAME"
+          __path__: /opt/vault/logs/vault_audit.log
+  - job_name: "vault-op-logs"
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: "vault"
+          host: "HOSTNAME"
+          __path__: /opt/vault/logs/vault.log
